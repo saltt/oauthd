@@ -214,6 +214,12 @@ clientCallback = (data, req, res, next) -> (e, r) -> #data:state,provider,redire
 	res.send view
 	next()
 
+server.get config.host_url, (req, res, next) ->
+	if Object.keys(req.params).length == 0
+		res.setHeader 'Location', config.base + '/admin'
+		res.send 302
+		return next()
+
 # oauth: handle callbacks
 server.get config.base + '/', (req, res, next) ->
 	if Object.keys(req.params).length == 0
@@ -323,7 +329,7 @@ server.get config.base + '/auth/:provider', (req, res, next) ->
 			return cb new check.Error 'This app is not configured for ' + provider.provider if not keyset
 			{parameters, response_type} = keyset
 			plugins.data.emit 'connect.auth', key:key, provider:provider.provider, parameters:parameters
-			if response_type != 'token' and (not options.state or options.state_type)
+			if response_type != 'token' and not (options.state or options.state_type)
 				return cb new check.Error 'You must provide a state when server-side auth'
 			options.response_type = response_type
 			opts = oauthv:oauthv, key:key, origin:origin, redirect_uri:req.params.redirect_uri, options:options
