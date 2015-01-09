@@ -1,0 +1,24 @@
+{
+  "name": "Eloqua",
+  "desc": "Constant Contact, Inc. is an online marketing company offering email marketing, social media marketing, online survey, event marketing, digital storefronts, and local deals tools, primarily to small businesses, nonprofit organizations, and membership associations.",
+  "url": "https://login.eloqua.com/auth/oauth2",
+  "oauth2": {
+	"authorize": "/authorize",
+	"access_token": {
+	  "url": "/token",
+	  "headers": {
+		"Authorization": "Basic !BASE64{client_id}:{client_secret}!BASE64"
+	  }
+	},
+	"request": {
+	  "headers": {
+		"Authorization": "Bearer {{token}}"
+	  }
+	}
+  },
+  "href": {
+	"docs": "http://topliners.eloqua.com/docs/DOC-3084",
+	"apps": "https://YOUR_BASESITE./apps/Cloud/Developer/App",
+	"provider": "http://eloqua.com"
+  }
+}
