@@ -106,13 +106,14 @@ server.post config.base + '/refresh_token/:provider', (req, res, next) ->
 		return next new check.Error "invalid credentials" if not r
 		db.apps.getKeyset req.body.key, req.params.provider, (e, keyset) ->
 			return next e if e
-			if keyset.response_type != "code"
+			unless keyset.response_type in ["code", "both"]
 				return next new check.Error "refresh token is a server-side feature only"
 			db.providers.getExtended req.params.provider, (e, provider) ->
 				return next e if e
 				if not provider.oauth2?.refresh
 					return next new check.Error "refresh token not supported for " + req.params.provider
 				oa = new oauth.oauth2(provider, keyset.parameters)
+				res.buildJsend = false
 				oa.refresh req.body.token, keyset, send(res,next)
 
 # iframe injection for IE

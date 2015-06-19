@@ -1,11 +1,23 @@
 {
   "name": "Eloqua",
-  "desc": "Constant Contact, Inc. is an online marketing company offering email marketing, social media marketing, online survey, event marketing, digital storefronts, and local deals tools, primarily to small businesses, nonprofit organizations, and membership associations.",
+  "desc": "Eloqua Corp. is a marketing automation SaaS company which develops automated marketing and demand generation software and services for business-to-business marketers.",
   "url": "https://login.eloqua.com/auth/oauth2",
   "oauth2": {
 	"authorize": "/authorize",
 	"access_token": {
 	  "url": "/token",
+	  "headers": {
+		"Authorization": "Basic !BASE64{client_id}:{client_secret}!BASE64"
+	  }
+	},
+	"refresh": {
+	  "url": "/token",
+	  "query": {
+		"scope": "full",
+		"grant_type": "refresh_token",
+		"refresh_token": "{{refresh_token}}",
+		"access_token": "{{token}}"
+	  },
 	  "headers": {
 		"Authorization": "Basic !BASE64{client_id}:{client_secret}!BASE64"
 	  }

@@ -19,6 +19,13 @@
                 "Authorization": "Bearer {{token}}"
             }
         },
+		"refresh": {
+		  	"url": "/oauth/token",
+		  	"query": {
+				"grant_type": "refresh_token",
+				"refresh_token": "{{refresh_token}}"
+		  	}
+		},
         "parameters": {
             "client_secret": "string",
             "client_id": "string",
