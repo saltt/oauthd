@@ -207,10 +207,29 @@ exports.getKeysets = check check.format.key, (key, callback) ->
 	db.redis.hget 'a:keys', key, (err, idapp) ->
 		return callback err if err
 		return callback new check.Error 'Unknown key' unless idapp
-		prefix = 'a:' + idapp + ':k:'
-		db.redis.keys prefix + '*', (err, replies) ->
+		prefix = 'a:' + idapp
+		providers_key = prefix + ':providers'
+		db.redis.smembers providers_key, (err, providers) ->
 			return callback err if err
-			callback null, (reply.substr(prefix.length) for reply in replies)
+			if providers?.length > 0
+				callback null, providers
+			else
+				db.redis.get prefix + ':stored_keysets', (err, v) ->
+					if v != '1'
+						db.redis.set prefix + ':stored_keysets', '1', (err) ->
+							db.redis.keys prefix + ':k:*', (err, provider_keys) ->
+								return callback err if err
+								commands = []
+								providers = []
+								for key in provider_keys
+									p = key.replace(prefix + ':k:', '')
+									providers.push p
+									commands.push ['sadd', providers_key, p]
+								db.redis.multi(commands).exec (err) ->
+									return callback err if err
+									callback null, providers
+					else
+						callback null, providers
 
 # check a domain
 exports.checkDomain = check check.format.key, 'string', (key, domain_str, callback) ->

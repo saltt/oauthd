@@ -18,6 +18,7 @@ crypto = require 'crypto'
 redis = require 'redis'
 config = require './config'
 exit = require './exit'
+async = require 'async'
 
 exports.redis = redis.createClient config.redis.port, config.redis.host, config.redis.options
 exports.redis.auth(config.redis.password) if config.redis.password
@@ -46,3 +47,22 @@ exports.generateHash = (data) ->
 	shasum = crypto.createHash 'sha1'
 	shasum.update config.staticsalt + data
 	return shasum.digest 'base64'
+
+exports.redis.keys = (pattern, cb) ->
+	keys_response = []
+	cursor = -1
+	async.whilst () ->
+		return cursor != '0'
+	, (next) ->
+		if cursor == -1
+			cursor = 0
+		exports.redis.send_command 'SCAN', [cursor, 'MATCH', pattern, 'COUNT', 100000], (err, response) ->
+			if err
+				return next(err)
+			cursor = response[0]
+			keys_array = response[1]
+			keys_response = keys_response.concat keys_array
+			next()
+	, (err) ->
+		return cb err if err
+		cb null, keys_response
