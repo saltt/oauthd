@@ -9,12 +9,19 @@
                 "type": "web_server",
                 "client_id": "{client_id}",
                 "redirect_uri": "{{callback}}",
-                "scope": "{scope}"
+                "scope": "{scope}",
+			  	"state": "{{state}}"
             }
         },
-        "access_token": "/oauth/token",
+        "access_token": {
+		  "url": "/oauth/token",
+		  "extra": [
+			"refresh_token"
+		  ]
+		},
         "request": {
-            "url": "https://api.createsend.com/api",
+            "url": "/api/v3.1",
+		  	"format": "json",
             "headers": {
                 "Authorization": "Bearer {{token}}"
             }
@@ -30,11 +37,16 @@
             "client_secret": "string",
             "client_id": "string",
             "scope": {
-                "values": {
-                    "CreateCampaigns": "Permission to create campaigns.",
-                    "ManageLists": "Permission to manage lists",
-                    "ImportSubscribers": "Permission to import subscribers.",
-                    "ViewSubscribersInReports": "Permission to view subscribers in reports."
+			  "values": {
+				"ViewReports": "Access to basic reporting data from any campaigns you've sent.",
+				"ManageLists": "Can access all your subscriber and list data.",
+				"CreateCampaigns": "Can create draft email campaigns.",
+				"ImportSubscribers": "Can add/import subscribers into your account.",
+				"SendCampaigns": "Can send campaigns to your subscribers.",
+				"ViewSubscribersInReports": "Can access campaign reports down to the individual subscriber level.",
+				"ManageTemplates": "Can add, remove or update email templates.",
+				"AdministerPersons": "Can add/edit account administrators and access billing information.",
+				"AdministerAccount": "Can add/edit account administrators and access billing information."
                 },
                 "separator": ","
             }
