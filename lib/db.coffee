@@ -15,14 +15,24 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 crypto = require 'crypto'
-redis = require 'redis'
+Redis = require 'ioredis'
 config = require './config'
 exit = require './exit'
 async = require 'async'
 
-exports.redis = redis.createClient config.redis.port, config.redis.host, config.redis.options
-exports.redis.auth(config.redis.password) if config.redis.password
-exports.redis.select(config.redis.database) if config.redis.database
+unless config.redis.sentinels?
+	redis = new Redis
+		port              : config.redis.port
+		host              : config.redis.host
+		password          : config.redis.password
+		dropBufferSupport : true
+else
+	redis = new Redis
+		name              : "mymaster"
+		sentinels         : config.redis.sentinels
+		dropBufferSupport : true
+
+exports.redis = redis
 
 exports.redis.on 'error', (err) ->
 	exports.redis.last_error = 'Error while connecting to redis DB (' + err.message + ')'
