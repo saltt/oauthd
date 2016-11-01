@@ -37,10 +37,10 @@
     "lib": "./lib"
   },
   "dependencies": {
-    "redis": "~0.9.2",
-    "restify": "~2.5.1",
     "async": "~0.2.9",
+    "ioredis": "^2.4.0",
     "request": "~2.33.0",
+    "restify": "~2.5.1",
     "restify-oauth2-oauthd": "~2.1.0",
     "ua-parser-js": "~0.6.2"
   },
@@ -59,4 +59,3 @@
     "q": "^1.0.1"
   }
 }
-
