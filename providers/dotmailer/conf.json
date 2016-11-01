@@ -1,0 +1,53 @@
+{
+  "name": "dotmailer",
+  "desc": "dotmailer is a leading marketing automation platform for email.",
+  "url" : "https://r2-api.dotmailer.com/OAuth2",
+  "oauth2": {
+    "authorize": {
+      "url": "/authorise.aspx",
+      "query": {
+        "client_id": "{client_id}",
+        "response_type": "code",
+        "redirect_uri": "",
+        "scope": "Account",
+        "state": "{{state}}"
+      }
+    },
+    "access_token": {
+      "url": "/Tokens.ashx",
+      "headers": {
+        "Authorization": "Basic !BASE64{client_id}:{client_secret}!BASE64"
+      },
+      "query": {
+        "client_id": "{client_id}",
+        "client_secret": "{client_secret}",
+        "redirect_uri": "",
+        "grant_type": "authorization_code",
+        "code": "{{code}}"
+      }
+    },
+      "url": "https://r2-api.dotmailer.com",
+      "headers": {
+        "Authorization": "Bearer {{access_token}}"
+      }
+    },
+    "refresh": {
+      "url": "/Tokens.ashx",
+      "headers": {
+        "Authorization": "Basic !BASE64{client_id}:{client_secret}!BASE64"
+      },
+      "query": {
+        "client_id": "{client_id}",
+        "client_secret": "{client_secret}",
+        "grant_type": "refresh_token",
+        "refresh_token": "{{refresh_token}}"
+      }
+    }
+  },
+  "href": {
+    "keys": "",
+    "docs": "https://developer.dotmailer.com/",
+    "apps": "",
+    "provider": "https://www.dotmailer.com"
+  }
+}
