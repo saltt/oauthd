@@ -1,41 +1,36 @@
 {
   "name": "dotmailer",
   "desc": "dotmailer is a leading marketing automation platform for email.",
-  "url" : "https://r2-api.dotmailer.com/OAuth2",
+  "url" : "https://r2-api.dotmailer.com/v2",
   "oauth2": {
     "authorize": {
-      "url": "/authorise.aspx",
+      "url": "https://r2-app.dotmailer.com/OAuth2/authorise.aspx",
       "query": {
         "client_id": "{client_id}",
+        "redirect_uri": "{{callback}}",
         "response_type": "code",
-        "redirect_uri": "",
         "scope": "Account",
         "state": "{{state}}"
       }
     },
     "access_token": {
-      "url": "/Tokens.ashx",
-      "headers": {
-        "Authorization": "Basic !BASE64{client_id}:{client_secret}!BASE64"
-      },
+      "url": "https://r2-app.dotmailer.com/OAuth2/Tokens.ashx",
       "query": {
         "client_id": "{client_id}",
         "client_secret": "{client_secret}",
-        "redirect_uri": "",
+        "redirect_uri": "{{callback}}",
         "grant_type": "authorization_code",
         "code": "{{code}}"
       }
     },
-      "url": "https://r2-api.dotmailer.com",
+    "request": {
+      "url": "https://r2-api.dotmailer.com/v2",
       "headers": {
-        "Authorization": "Bearer {{access_token}}"
+        "Authorization": "Bearer {{token}}"
       }
     },
     "refresh": {
-      "url": "/Tokens.ashx",
-      "headers": {
-        "Authorization": "Basic !BASE64{client_id}:{client_secret}!BASE64"
-      },
+      "url": "https://r2-app.dotmailer.com/OAuth2/Tokens.ashx",
       "query": {
         "client_id": "{client_id}",
         "client_secret": "{client_secret}",
@@ -45,7 +40,7 @@
     }
   },
   "href": {
-    "keys": "",
+    "keys": "Must email: support@dotmailer.com",
     "docs": "https://developer.dotmailer.com/",
     "apps": "",
     "provider": "https://www.dotmailer.com"
