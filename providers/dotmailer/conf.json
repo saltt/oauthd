@@ -1,0 +1,48 @@
+{
+  "name": "dotmailer",
+  "desc": "dotmailer is a leading marketing automation platform for email.",
+  "url" : "https://r2-api.dotmailer.com/v2",
+  "oauth2": {
+    "authorize": {
+      "url": "https://r2-app.dotmailer.com/OAuth2/authorise.aspx",
+      "query": {
+        "client_id": "{client_id}",
+        "redirect_uri": "{{callback}}",
+        "response_type": "code",
+        "scope": "Account",
+        "state": "{{state}}"
+      }
+    },
+    "access_token": {
+      "url": "https://r2-app.dotmailer.com/OAuth2/Tokens.ashx",
+      "query": {
+        "client_id": "{client_id}",
+        "client_secret": "{client_secret}",
+        "redirect_uri": "{{callback}}",
+        "grant_type": "authorization_code",
+        "code": "{{code}}"
+      }
+    },
+    "request": {
+      "url": "https://r2-api.dotmailer.com/v2",
+      "headers": {
+        "Authorization": "Basic {{token}}"
+      }
+    },
+    "refresh": {
+      "url": "https://r2-app.dotmailer.com/OAuth2/Tokens.ashx",
+      "query": {
+        "client_id": "{client_id}",
+        "client_secret": "{client_secret}",
+        "grant_type": "refresh_token",
+        "refresh_token": "{{refresh_token}}"
+      }
+    }
+  },
+  "href": {
+    "keys": "Must email: support@dotmailer.com",
+    "docs": "https://developer.dotmailer.com/",
+    "apps": "",
+    "provider": "https://www.dotmailer.com"
+  }
+}
