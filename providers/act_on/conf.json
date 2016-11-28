@@ -10,7 +10,7 @@
 		"response_type": "code",
 		"client_id": "{client_id}",
 		"state": "{{state}}",
-		"redirect_uri": "http://localhost"
+		"redirect_uri": "https://oauth.us/auth"
 	  }
 	},
 	"access_token": {
@@ -19,7 +19,7 @@
 		"code": "{{code}}",
 		"client_id": "{client_id}",
 		"client_secret": "{client_secret}",
-		"redirect_uri": "http://localhost",
+		"redirect_uri": "https://oauth.us/auth",
 		"grant_type": "authorization_code"
 	  }
 	},
