@@ -3,15 +3,12 @@ var me = {
     params: {},
     fields: {
         apiEndpoint: function(me) {
-            console.log(me);
             findValueByName(me.properties, "ApiEndpoint")
         },
         name: function(me) {
-            console.log(me);
             findValueByName(me.properties, "Name")
         },
         email: function(me) {
-            console.log(me);
             findValueByName(me.properties, "MainEmail")
         },
         id: function(me) {
