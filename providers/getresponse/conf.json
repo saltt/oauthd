@@ -24,7 +24,7 @@
     "request": {
       "url": "https://api.getresponse.com/v3",
       "headers": {
-        "Authorization": "Bearer {{access_token}}"
+        "Authorization": "Bearer {{token}}"
       }
     },
     "refresh": {
