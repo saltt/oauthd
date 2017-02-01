@@ -1,6 +1,6 @@
 {
   "name": "GetResponse",
-  "desc": "Test",
+  "desc": "GetResponse offers a complete suite of simple-yet-powerful solutions, scaled and customized for small and large companies for email marketing and online campaign management.",
   "url": "https://api.getresponse.com/v3",
   "oauth2": {
     "authorize": {
@@ -24,7 +24,7 @@
     "request": {
       "url": "https://api.getresponse.com/v3",
       "headers": {
-        "Authorization": "Bearer {{access_token}}"
+        "Authorization": "Bearer {{token}}"
       }
     },
     "refresh": {
