@@ -1,6 +1,6 @@
 {
-  "name": "Eloqua",
-  "desc": "Eloqua Corp. is a marketing automation SaaS company which develops automated marketing and demand generation software and services for business-to-business marketers.",
+  "name": "Oracle Marketing Cloud",
+  "desc": "Oracle Marketing Cloud personalizes customer experiences with marketing software including content marketing, social marketing, and data management.",
   "url": "https://login.eloqua.com/auth/oauth2",
   "oauth2": {
 	"authorize": "/authorize",
@@ -29,8 +29,8 @@
 	}
   },
   "href": {
-	"docs": "http://topliners.eloqua.com/docs/DOC-3084",
+	"docs": "http://docs.oracle.com/cloud/latest/marketingcs_gs/OMCAB/",
 	"apps": "https://YOUR_BASESITE./apps/Cloud/Developer/App",
-	"provider": "http://eloqua.com"
+	"provider": "https://login.eloqua.com/"
   }
 }
