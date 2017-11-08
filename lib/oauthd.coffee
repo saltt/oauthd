@@ -22,7 +22,7 @@ async = require "async"
 config.rootdir = Path.normalize __dirname + '/..'
 
 # request FIX
-qs = require 'request/node_modules/qs'
+qs = require 'qs'
 oldstringify = qs.stringify
 qs.stringify = ->
 	result = oldstringify.apply(qs, arguments)
