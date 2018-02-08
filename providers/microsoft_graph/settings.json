@@ -1,0 +1,22 @@
+{
+	"settings": {
+		"createApp": {
+			"url": "https://apps.dev.microsoft.com/",
+			"image": "config.png"
+		},
+		"copyingKey": {
+			"url": "https://apps.dev.microsoft.com/",
+			"image": "keys.png"
+		},
+		"install": {
+			"href": {
+				"provider": "https://apps.dev.microsoft.com/",
+				"docs": "https://developer.microsoft.com/en-us/graph/docs/concepts/overview"
+			}
+		},
+        "sample": {
+            "method": "get",
+            "url": "/messages"
+        }
+	}
+}

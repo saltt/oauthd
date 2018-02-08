@@ -1,0 +1,63 @@
+{
+	"name": "Microsoft Graph",
+	"desc": "Use the Microsoft Graph API to connect to the data that drives productivity – mail, calendar, contacts, documents, directory, devices, and more.",
+	"url": "https://login.microsoftonline.com/common/oauth2/v2.0",
+	"oauth2": {
+		"authorize": {
+			"url": "/authorize",
+			"query": {
+				"client_id": "{client_id}",
+				"response_type": "code",
+				"redirect_uri": "{{callback}}",
+				"state": "{{state}}",
+        "scope": "{scope}",
+        "response_mode": "query",
+        "prompt": "consent"
+			}
+		},
+		"access_token": {
+			"url": "/token",
+      "query": {
+        "code": "{{code}}",
+        "client_id": "{client_id}",
+        "client_secret": "{client_secret}",
+        "redirect_uri": "{{callback}}",
+        "grant_type": "authorization_code"
+      }
+		},
+		"request": {
+      "url": "https://graph.microsoft.com/v1.0/me",
+      "headers": {
+          "Authorization": "Bearer {{token}}"
+      }
+    },
+    "refresh": {
+      "url": "/token",
+      "method": "post",
+      "query": {
+        "token_type": "Bearer",
+        "grant": "refresh_token",
+        "client_id": "{client_id}",
+        "client_secret": "{client_secret}"
+      }
+    },
+    "parameters": {
+      "client_id": "string",
+      "client_secret": "string",
+      "scope": {
+        "values": {
+          "openid": "Single sign on",
+          "profile": "Basic Profile Information",
+          "User.Read": "Allows users to sign-in to the app, and allows the app to read the profile of signed-in users. It also allows the app to read basic company information of signed-in users.",
+          "Files.ReadWrite.All": "Allows the app to read, create, update and delete all files the signed-in user can access."
+        }
+      }
+    }
+	},
+	"href": {
+		"keys": "https://apps.dev.microsoft.com",
+		"docs": "https://developer.microsoft.com/en-us/graph/docs/concepts/overview",
+		"apps": "https://apps.dev.microsoft.com",
+		"provider": "https://developer.microsoft.com/"
+	}
+}
