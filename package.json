@@ -47,14 +47,14 @@
   },
   "devDependencies": {
     "grunt-nodemon": "~0.1.2",
-    "grunt-contrib-jshint": "latest",
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-nodeunit": "latest",
-    "grunt-contrib-watch": "latest",
-    "grunt-contrib-coffee": "latest",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-contrib-coffee": "^1.0.0",
     "grunt-contrib-less": "latest",
     "grunt-concurrent": "latest",
     "grunt-subgrunt": "~0.3.0",
-    "grunt": "~0.4.4",
     "jayschema": "~0.2.0",
     "jsonlint": "~1.6.0",
     "q": "^1.0.1"
