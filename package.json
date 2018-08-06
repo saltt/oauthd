@@ -22,6 +22,7 @@
   },
   "scripts": {
     "grunt": "grunt",
+    "server": "coffee lib/oauthd.coffee",
     "install": "echo Please run 'oauthd config' to edit the configuration file.",
     "start": "bash ./oauthd.sh start",
     "stop": "bash ./oauthd.sh stop",
