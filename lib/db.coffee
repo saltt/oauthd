@@ -28,7 +28,7 @@ unless config.redis.sentinels?
 		dropBufferSupport : true
 else
 	redis = new Redis
-		name              : "mymaster"
+		name              : config.redis.name
 		sentinels         : config.redis.sentinels
 		dropBufferSupport : true
 
