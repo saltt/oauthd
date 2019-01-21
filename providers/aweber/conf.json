@@ -6,7 +6,7 @@
         "request_token": "/request_token",
         "authorize": "/authorize",
         "access_token": "/access_token",
-        "request": "https://api.aweber.com/1.0/"
+        "request": "https://api.aweber.com/1.0"
     },
     "href": {
         "keys": "https://labs.aweber.com/apps",
