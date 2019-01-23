@@ -23,12 +23,17 @@ module.exports = (env) ->
 
 	if env.mode != 'test'
 		Redis = require 'ioredis'
-		redis_options =
-			port: config.redis.port || 6379
-			host: config.redis.host || '127.0.0.1'
-			db: config.redis.database || 0
-			retryStrategy: (times) => Math.min(times * 100, 2000)
-		redis_options.password = config.redis.password if config.redis.password
+		if config.redis.sentinels
+			redis_options =
+				name: config.redis.name
+				sentinels: config.redis.sentinels
+		else
+			redis_options =
+				port: config.redis.port || 6379
+				host: config.redis.host || '127.0.0.1'
+				db: config.redis.database || 0
+				retryStrategy: (times) => Math.min(times * 100, 2000)
+			redis_options.password = config.redis.password if config.redis.password
 		data.redis = new Redis redis_options
 		_multi = data.redis.multi
 		data.redis.multi = (commands) =>
