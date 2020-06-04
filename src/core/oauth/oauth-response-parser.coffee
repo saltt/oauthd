@@ -20,7 +20,7 @@ zlib = require 'zlib'
 
 module.exports = (env) ->
 	check = env.utilities.check
-	
+
 	class OAuthResponseParser
 		constructor: (response, body, format, tokenType) ->
 			@_response = response
@@ -49,7 +49,7 @@ module.exports = (env) ->
 				else
 					@_parseUnknownBody()
 				return callback @error if @error
-				return callback @_setError 'HTTP status code: ' + @_response.statusCode if @_response.statusCode != 200 and @_response.statusCode != 201 
+				return callback @_setError 'HTTP status code: ' + @_response.statusCode if @_response.statusCode != 200 and @_response.statusCode != 201
 				return callback null, @
 
 		_parse:
@@ -67,6 +67,8 @@ module.exports = (env) ->
 		_parseBody: (parseFunc) ->
 			try
 				@body = parseFunc(@_unparsedBody)
+				if @_tokenType is 'refresh_token' and not @body.token_type
+    				@body.token_type = 'refresh_token'
 			catch ex
 				return @_setError 'Unable to parse response'
 			@_setError 'Empty response' if not @body?
