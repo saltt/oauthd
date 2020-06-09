@@ -68,7 +68,7 @@ module.exports = (env) ->
 		_parseBody: (parseFunc) ->
 			try
 				@body = parseFunc(@_unparsedBody)
-				if @_tokenType is 'refresh_token' and not @body.token_type
+				if @_tokenType is 'refresh token' and not @body.token_type
     				@body.token_type = 'refresh_token'
 			catch ex
 				return @_setError 'Unable to parse response'
