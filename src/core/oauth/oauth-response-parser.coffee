@@ -28,6 +28,7 @@ module.exports = (env) ->
 			@_format = format || response.headers['content-type']
 			@_format = @_format.match(/^([^;]+)/)[0] # skip charset etc.
 			@_errorPrefix = 'Error during the \'' + tokenType + '\' step'
+			@_tokenType = tokenType;
 
 		decode: (callback) ->
 			if @_response.headers['content-encoding'] == 'gzip'
