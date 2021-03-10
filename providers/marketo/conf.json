@@ -1,0 +1,24 @@
+{
+	"name": "Intercom",
+	"desc": "Intercom is the customer communication platform.",
+	"url": "https://446-STX-732.mktorest.com",
+	"oauth2": {
+		"authorize": "/rest",
+		"access_token": "/identity/oauth/token",
+		"refresh": "/identity/oauth/token",
+		"request": {
+			"url": "https://446-STX-732.mktorest.com",
+			"format": "json",
+			"headers": {
+				"Authorization": "Bearer {{token}}",
+				"Accept": "application/json"
+			}
+		}
+	},
+	"href": {
+		"keys": "https://app.marketo.com",
+		"docs": "http://developers.marketo.com/documentation/rest/",
+		"apps": "https://app.marketo.com",
+		"provider": "https://marketo.com/"
+	}
+}

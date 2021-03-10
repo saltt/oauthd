@@ -1,0 +1,22 @@
+{
+	"settings": {
+		"createApp": {
+			"url": "https://engage-ab.marketo.com/?munchkinId=446-STX-732#/classic/MW0A1",
+			"image": "config.png"
+		},
+		"copyingKey": {
+			"url": "https://engage-ab.marketo.com/?munchkinId=446-STX-732#/classic/WP0A1",
+			"image": "keys.png"
+		},
+		"install": {
+			"href": {
+				"provider": "https://marketo.com/",
+				"docs": "http://developers.marketo.com/documentation/rest/"
+			}
+		},
+		"sample": {
+			"method": "get",
+			"url": "/users"
+		}
+	}
+}
