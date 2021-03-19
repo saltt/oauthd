@@ -1,6 +1,6 @@
 {
-	"name": "Intercom",
-	"desc": "Intercom is the customer communication platform.",
+	"name": "Marketo",
+	"desc": "Marketo is the customer communication platform.",
 	"url": "https://446-STX-732.mktorest.com",
 	"oauth2": {
 		"authorize": "/rest",
